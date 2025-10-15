@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>PDF Merger — Preview & Merge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <h1>PDF Merger</h1>
+        <p class="subtitle">Upload two or more PDFs, reorder if needed, preview the merged PDF and download it.</p>
+      </header>
+
+      <main class="panel">
+        <section class="uploader">
+          <label class="file-label">
+            <input id="fileInput" type="file" name="pdfs" accept="application/pdf" multiple>
+            <div class="drop-area">Click or drop PDF files here</div>
+          </label>
+          <div id="fileList" class="file-list"></div>
+          <div class="actions">
+            <button id="mergeBtn" class="btn primary" disabled>Merge & Preview</button>
+            <button id="clearBtn" class="btn">Clear</button>
+          </div>
+          <div id="message" class="message" role="status" aria-live="polite"></div>
+        </section>
+
+        <section class="preview" id="previewSection" hidden>
+          <div class="preview-header">
+            <h2>Preview (merged)</h2>
+            <div>
+              <a id="downloadLink" class="btn primary" href="#" download="merged.pdf">Download PDF</a>
+              <button id="closePreview" class="btn">Close Preview</button>
+            </div>
+          </div>
+          <iframe id="pdfFrame" class="pdf-frame" title="Merged PDF preview"></iframe>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <small>Built with ❤️ — pypdf + Flask</small>
+      </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
